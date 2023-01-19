@@ -98,8 +98,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     func check() -> Bool {
         if (txtInputMoneyType.text != "" && txtOutputMoneyType.text != "")
         {
-            inputMoneyRate = exchangeRates[txtInputMoneyType.text!] ?? 0
-            outputMoneyRate = exchangeRates[txtOutputMoneyType.text!] ?? -1
+            inputMoneyRate = exchangeRates[txtInputMoneyType.text!.uppercased()] ?? 0
+            outputMoneyRate = exchangeRates[txtOutputMoneyType.text!.uppercased()] ?? -1
             return true
         } else {
             lblWarning.text = "Chưa nhập đủ thông tin"
@@ -131,7 +131,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         let outputMoney =  (Double(txtMoneyExchangeAmount.text!) ?? 0) * rate
         if(isGetRate)
         {
-            lblExchangeMoneyOutput.text = "\(outputMoney)"
+            lblExchangeMoneyOutput.text = "\(outputMoney) \(txtOutputMoneyType.text!.uppercased())"
             lblWarning.text = ""
         }else {
             lblWarning.text = "Chưa lấy tỉ lệ đổi hoán!"
